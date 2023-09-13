@@ -13,10 +13,10 @@ export default function Contents({ topic_id }: Props) {
   const { data, loading, error } = useQuery(GET_TOPIC, {
     variables: { topicId: topic_id },
   });
-  let topic = useRef();
+  let topic = useRef([]);
   useEffect(() => {
     if (data) {
-      topic.current = data?.getTopic;
+      topic.current = topic.current.slice(data?.getTopic);
     }
   }, [topic_id, data?.getTopic]);
 
