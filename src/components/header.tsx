@@ -7,7 +7,7 @@ export default function Header() {
   const [token, setToken] = useState(false);
   if (typeof window !== "undefined") {
     // Perform localStorage action
-    tokens = localStorage.getItem("token");
+    tokens = sessionStorage.getItem("auth_object");
   }
   useEffect(() => {
     if (tokens) {

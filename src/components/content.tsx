@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import Card from "./card";
 import Question from "./question";
 import { GET_TOPIC } from "../graphql/query";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import LogoCard from "./logo_card";
 
 interface Props {
@@ -13,10 +13,10 @@ export default function Contents({ topic_id }: Props) {
   const { data, loading, error } = useQuery(GET_TOPIC, {
     variables: { topicId: topic_id },
   });
-  let topic = {};
+  let topic = useRef();
   useEffect(() => {
     if (data) {
-      topic = data?.getTopic;
+      topic.current = data?.getTopic;
     }
   }, [topic_id, data?.getTopic]);
 

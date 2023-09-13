@@ -4,8 +4,6 @@ export default function Question({ question }: any) {
   const [answer, setAnswer] = useState<Boolean>();
 
   const handleAnswer = (value: any,index:number) => {
-    console.log(value.value,"hello");
-    console.log(question[index].correctAnswer,"hello");
     if (value.value === question[index].correctAnswer) {
       setAnswer(true);
     } else {
@@ -17,7 +15,7 @@ export default function Question({ question }: any) {
   return (
     <>
       {question?.map((element: any,index:number) => (
-        <div className=" w-full rounded overflow-hidden shadow-lg pt-5">
+        <div key={index} className=" w-full rounded overflow-hidden shadow-lg pt-5">
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">Assignment</div>
             <p className="text-gray-700 text-base pb-2">
